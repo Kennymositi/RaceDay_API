@@ -41,8 +41,14 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddDbContext<RaceDay_Context>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("RaceDayConnection")));
+    options
+        .UseSqlServer(
+            builder.Configuration.GetConnectionString("RaceDayConnection"))
+        .EnableSensitiveDataLogging(false)
+        .LogTo(
+            message => Console.WriteLine(message),
+            new[] { DbLoggerCategory.Database.Command.Name },
+            LogLevel.Information));
 
 var jwtKey = builder.Configuration["Jwt:Key"]
     ?? throw new InvalidOperationException("JWT key is missing.");
