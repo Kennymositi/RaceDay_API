@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RaceDay_API.Models
 {
 
-    [Table("ENROLMENT")]
+    [Table("ENROLLMENT")]
     public class Enrollment
     {
 

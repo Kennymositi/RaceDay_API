@@ -39,6 +39,21 @@ namespace RaceDay_API.Database
 
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Enrollment>()
+    .HasOne(e => e.User)
+    .WithMany(u => u.Enrollments)
+    .HasForeignKey(e => e.participant_id);
+
+            modelBuilder.Entity<Enrollment>()
+                .HasOne(e => e.Event)
+                .WithMany()
+                .HasForeignKey(e => e.event_id);
+
+            modelBuilder.Entity<Enrollment>()
+                .HasOne(e => e.Category)
+                .WithMany()
+                .HasForeignKey(e => e.category_id);
+
             modelBuilder.Entity<Event_Type>().ToTable("EVENTTYPE");
 
             // Each user must have a unique email address.
