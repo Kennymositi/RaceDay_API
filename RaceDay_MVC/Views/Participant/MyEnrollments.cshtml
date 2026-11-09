@@ -1,0 +1,47 @@
+﻿@model List<RaceDay_MVC.Models.EnrollmentViewModel>
+@{
+    ViewData["Title"] = "My Enrolments";
+}
+<div class="container mt-5">
+    <h2>My Enrolments</h2>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">
+            You have not enrolled in any events yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Event ID</th>
+                    <th>Category ID</th>
+                    <th>Enrollment Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EventId</td>
+                        <td>@item.CategoryId</td>
+                        <td>@item.EnrollmentDate.ToString("dd MMM yyyy")</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <a asp-action="Dashboard"
+       class="btn btn-secondary">
+        Back to Dashboard
+    </a>
+</div>

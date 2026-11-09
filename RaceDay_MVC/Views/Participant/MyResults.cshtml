@@ -1,0 +1,45 @@
+﻿@model List<RaceDay_MVC.Models.ResultViewModel>
+@{
+    ViewData["Title"] = "My Results";
+}
+<div class="container mt-5">
+    <h2>My Race Results</h2>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">
+            No results are available yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Enrollment ID</th>
+                    <th>Finishing Position</th>
+                    <th>Finish Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EnrollmentId</td>
+                        <td>@item.FinishingPosition</td>
+                        <td>@item.FinishTime</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <a asp-action="Dashboard"
+       class="btn btn-secondary">
+        Back to Dashboard
+    </a>
+</div>

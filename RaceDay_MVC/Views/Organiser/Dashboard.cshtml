@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Organiser Dashboard";
+}
+
+<div class="container mt-5">
+    <h2>Welcome, @Context.Session.GetString("FullName")</h2>
+    <h4>Organiser Dashboard</h4>
+    <p>Manage your RaceDay events here.</p>
+
+    <a asp-controller="Organiser"
+       asp-action="Events"
+       class="btn btn-primary mt-3">
+        Manage My Events
+    </a>
+</div>

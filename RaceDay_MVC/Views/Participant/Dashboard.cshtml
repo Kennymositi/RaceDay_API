@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Participant Dashboard";
+}
+
+<div class="container mt-5">
+    <h2>Welcome, @Context.Session.GetString("FullName")</h2>
+    <h4>Participant Dashboard</h4>
+    <p>Discover and enrol in upcoming RaceDay events.</p>
+
+    <a asp-controller="Participant"
+       asp-action="Events"
+       class="btn btn-primary mt-3">
+        Browse Events
+    </a>
+
+    <a asp-controller="Participant"
+       asp-action="MyEnrollments"
+       class="btn btn-primary mt-3">
+        My Enrolments
+    </a>
+
+    <a asp-controller="Participant"
+       asp-action="MyResults"
+       class="btn btn-primary mt-3">
+        My Results
+    </a>
+
+    <a asp-controller="Participant"
+       asp-action="Profile"
+       class="btn btn-primary mt-3">
+        My Profile
+    </a>
+</div>
