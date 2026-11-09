@@ -1,0 +1,69 @@
+﻿@model RaceDay_MVC.Models.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Add Category";
+}
+
+<div class="container mt-4">
+    <h2>Add Event Category</h2>
+
+    <form asp-action="AddCategory" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="EventId" />
+
+        <div asp-validation-summary="All"
+             class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryName" class="form-label">
+                Category Name
+            </label>
+            <input asp-for="CategoryName" class="form-control"
+                   placeholder="e.g. 10km Open" />
+            <span asp-validation-for="CategoryName"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryType" class="form-label">
+                Category Type
+            </label>
+            <select asp-for="CategoryType" class="form-select">
+                <option value="">Select category type</option>
+                <option value="AGE">Age</option>
+                <option value="DISTANCE">Distance</option>
+            </select>
+            <span asp-validation-for="CategoryType"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryValue" class="form-label">
+                Category Value
+            </label>
+            <input asp-for="CategoryValue" class="form-control"
+                   placeholder="e.g. 18-35 or 10km" />
+            <span asp-validation-for="CategoryValue"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">
+                Description
+            </label>
+            <textarea asp-for="Description"
+                      class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Save Category
+        </button>
+
+        <a asp-action="Categories"
+           asp-route-eventId="@Model.EventId"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+</div>

@@ -60,9 +60,9 @@ namespace RaceDay_API.Database
                 .HasForeignKey(e => e.event_id);
 
             modelBuilder.Entity<Enrollment>()
-                .HasOne(e => e.Category)
-                .WithMany()
-                .HasForeignKey(e => e.category_id);
+     .HasOne(e => e.Category)
+     .WithMany(c => c.Enrollments)
+     .HasForeignKey(e => e.category_id);
 
             modelBuilder.Entity<Event_Type>().ToTable("EVENTTYPE");
 
@@ -74,15 +74,7 @@ namespace RaceDay_API.Database
 
                 .IsUnique();
 
-            modelBuilder.Entity<Event>()
-    .HasOne<Event_Type>()
-    .WithMany(t => t.Events)
-    .HasForeignKey(e => e.event_type_id);
-
-modelBuilder.Entity<Event>()
-    .HasOne<User>()
-    .WithMany(u => u.EventsOrganised)
-    .HasForeignKey(e => e.organiser_id);
+            
 
             // Each enrollment can have at most one result.
 

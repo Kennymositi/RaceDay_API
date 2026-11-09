@@ -1,8 +1,219 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
+    ViewData["Title"] = "RaceDay";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RaceDay</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #061A3A;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            height: 85px;
+            padding: 0 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #243653;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+            .logo span {
+                color: #FF6B00;
+            }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .login {
+            color: white;
+            border: 2px solid white;
+        }
+
+            .login:hover {
+                background: white;
+                color: #061A3A;
+            }
+
+        .register {
+            background: #FF6B00;
+            color: white;
+            border: 2px solid #FF6B00;
+        }
+
+            .register:hover {
+                background: #E65F00;
+            }
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .tagline {
+            color: #FF8A35;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.15;
+            font-weight: 800;
+            margin-bottom: 22px;
+        }
+
+            h1 span {
+                color: #FF6B00;
+            }
+
+        .description {
+            color: #CBD5E1;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+            .hero-buttons .btn {
+                min-width: 155px;
+            }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #94A3B8;
+            border-top: 1px solid #243653;
+            font-size: 13px;
+        }
+
+        @@media (max-width: 600px) {
+            .navbar {
+                padding: 0 5%;
+                height: auto;
+                min-height: 80px;
+                flex-wrap: wrap;
+                gap: 12px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+
+            .nav-buttons {
+                gap: 8px;
+            }
+
+            .btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="/" class="logo">RACE<span>DAY</span></a>
+
+        <div class="nav-buttons">
+            <a href="/Account/Login" class="btn login">Login</a>
+            <a href="/Account/Register" class="btn register">Register</a>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+
+            <div class="tagline">YOUR RACE. YOUR MOMENT.</div>
+
+            <h1>
+                EVERY RACE HAS A STORY.
+                <span>MAKE YOURS COUNT.</span>
+            </h1>
+
+            <p class="description">
+                Find events, take part and track your results.
+                Your next racing experience starts here.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/Account/Register" class="btn register">
+                    Register Now
+                </a>
+
+                <a href="/Account/Login" class="btn login">
+                    Login
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; @DateTime.Now.Year RaceDay. All Rights Reserved.
+    </footer>
+
+</body>
+</html>

@@ -62,6 +62,18 @@
                                 Edit
                             </a>
 
+                            <a asp-action="Categories"
+                               asp-route-eventId="@item.EventId"
+                               class="btn btn-info btn-sm">
+                                Categories
+                            </a>
+
+                            <a asp-action="Enrolments"
+                               asp-route-eventId="@item.EventId"
+                               class="btn btn-success btn-sm">
+                                Enrolments
+                            </a>
+
                             <form asp-action="Delete"
                                   asp-route-id="@item.EventId"
                                   method="post"

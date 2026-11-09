@@ -1,0 +1,74 @@
+﻿@model List<RaceDay_MVC.Models.EnrollmentViewModel>
+
+@{
+    ViewData["Title"] = "Event Enrolments";
+}
+
+<div class="container mt-4">
+
+    <h2>Enrolments - @ViewBag.EventName</h2>
+
+    <p>Participants registered for this event.</p>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No participants have enrolled in this event yet.
+        </div>
+    }
+    else
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Enrolment ID</th>
+                    <th>Participant ID</th>
+                    <th>Category ID</th>
+                    <th>Enrolment Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EnrollmentId</td>
+                        <td>@item.ParticipantId</td>
+                        <td>@item.CategoryId</td>
+                        <td>@item.EnrollmentDate.ToString("dd MMM yyyy")</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <a asp-action="RecordResult"
+                               asp-route-enrollmentId="@item.EnrollmentId"
+                               asp-route-eventId="@item.EventId"
+                               class="btn btn-sm btn-primary">
+                                Record Result
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a asp-action="Events" class="btn btn-secondary">
+        Back to My Events
+    </a>
+
+</div>

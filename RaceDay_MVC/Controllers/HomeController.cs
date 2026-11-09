@@ -15,9 +15,14 @@ namespace RaceDay_MVC.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("Role") == "ORGANISER")
+                return RedirectToAction("Dashboard", "Organiser");
+
+            if (HttpContext.Session.GetString("Role") == "PARTICIPANT")
+                return RedirectToAction("Dashboard", "Participant");
+
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
